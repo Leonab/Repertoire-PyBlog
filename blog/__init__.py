@@ -85,11 +85,16 @@ def _request_user_info(credentials):
     resp, content = http.request(
         'https://www.googleapis.com/plus/v1/people/me')
 
-    print("response----",content)
+    me = json.loads(content.decode('utf-8'))
+    name = me['displayName']
+    #print(name)
 
     if resp.status != 200:
         current_app.logger.error(
             "Error while obtaining user profile: %s" % resp)
         return None
+
+    if name != "Nabeel Khawar":
+        return None,redirect('/')
 
     session['profile'] = json.loads(content.decode('utf-8'))
