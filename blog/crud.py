@@ -1,4 +1,4 @@
-from bookshelf import get_model, oauth2, storage
+from blog import get_model, oauth2, storage
 from flask import Blueprint, current_app, redirect, render_template, request, session, url_for
 import datetime
 
