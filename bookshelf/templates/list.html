@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Articles</h3>
+{% if session.profile %}
+<a href="/posts/add" class="btn btn-success btn-sm">
+  <i class="glyphicon glyphicon-plus"></i>
+  Add New Post
+</a>
+{% endif %}
+
+{% for post in posts %}
+<div class="media">
+  <a href="/posts/{{post.id}}">
+    <div class="media-left">
+      {% if post.imageUrl %}
+        <img src="{{book.imageUrl}}">
+      {% else %}
+        <img src="http://placekitten.com/g/128/192">
+      {% endif %}
+    </div>
+    <div class="media-body">
+      <h4>{{post.title}}</h4>
+      <p>{{post.description}}</p>
+    </div>
+  </a>
+</div>
+{% else %}
+<p>No books found</p>
+{% endfor %}
+
+{% if next_page_token %}
+<nav>
+  <ul class="pager">
+    <li><a href="?page_token={{next_page_token}}">More</a></li>
+  </ul>
+</nav>
+{% endif %}
+
+{% endblock %}

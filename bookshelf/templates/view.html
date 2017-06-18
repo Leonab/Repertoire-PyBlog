@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Article</h3>
+
+<div class="btn-group">
+  <a href="/posts/{{post.id}}/edit" class="btn btn-primary btn-sm">
+    <i class="glyphicon glyphicon-edit"></i>
+    Edit post
+  </a>
+  <a href="/posts/{{post.id}}/delete" class="btn btn-danger btn-sm">
+    <i class="glyphicon glyphicon-trash"></i>
+    Delete post
+  </a>
+</div>
+
+<div class="media">
+  <div class="media-left">
+    {% if post.imageUrl %}
+      <img class="book-image" src="{{post.imageUrl}}">
+    {% else %}
+      <img class="book-image" src="http://placekitten.com/g/128/192">
+    {% endif %}
+  </div>
+  <div class="media-body">
+    <h4 class="book-title">
+      {{post.title}}
+      <small>{{post.publishedDate}}</small>
+    </h4>
+    <h5 class="book-author">By {{post.author|default('Unknown', True)}}</h5>
+    <small class="book-added-by">- {{post.modifiedDate}}</small>
+    <p class="book-description">{{post.description}}</p>
+  </div>
+</div>
+
+{% endblock %}

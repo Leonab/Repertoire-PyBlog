@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>{{action}} Post</h3>
+
+<form method="POST" enctype="multipart/form-data">
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" value="{{post.title}}" class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Body</label>
+    <textarea name="description" id="description" class="form-control">{{post.description}}</textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="author">Author</label>
+    <input type="text" name="author" id="author" value="{{post.author}}" class="form-control"/>
+  </div>
+
+  <div class="form-group hidden">
+    <label for="createdById">Created by ID</label>
+    <input type="text" name="createdById" id="createdById" value="{{post.createdById}}" class="form-control"/>
+  </div>
+
+  <button type="submit" class="btn btn-success">Save</button>
+</form>
+
+{% endblock %}
